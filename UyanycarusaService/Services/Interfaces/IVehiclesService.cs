@@ -43,6 +43,18 @@ namespace UyanycarusaService.Services
         /// <param name="imageUrl">URL de la imagen a obtener</param>
         /// <returns>Tupla con el contenido de la imagen (bytes) y el tipo de contenido (content type)</returns>
         Task<(byte[] content, string contentType)> GetImageAsync(string imageUrl);
+
+        /// <summary>
+        /// Obtiene la lista de componentes para selección de daños
+        /// </summary>
+        /// <returns>Lista de componentes</returns>
+        Task<List<object>> GetComponentsAsync();
+
+        /// <summary>
+        /// Obtiene la lista de tipos de falla para selección de daños
+        /// </summary>
+        /// <returns>Lista de tipos de falla</returns>
+        Task<List<object>> GetFaultTypesAsync();
     }
 }
 

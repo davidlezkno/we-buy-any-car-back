@@ -199,5 +199,43 @@ namespace UyanycarusaService.Services
 
             return (bytes, contentType);
         }
+
+        /// <summary>
+        /// Obtiene la lista de componentes para selección de daños
+        /// </summary>
+        /// <returns>Lista de componentes</returns>
+        public async Task<List<object>> GetComponentsAsync()
+        {
+            // Simulating async operation
+            await Task.Delay(100);
+
+            return new List<object>
+            {
+                new { value = "9", label = "Bumper" },
+                new { value = "103", label = "Bumper - Metal" },
+                new { value = "23", label = "Grille" },
+                new { value = "4", label = "Hood" },
+                new { value = "28", label = "Lights" },
+                new { value = "60", label = "Windshield" }
+            };
+        }
+
+        /// <summary>
+        /// Obtiene la lista de tipos de falla para selección de daños
+        /// </summary>
+        /// <returns>Lista de tipos de falla</returns>
+        public async Task<List<object>> GetFaultTypesAsync()
+        {
+            // Simulating async operation
+            await Task.Delay(100);
+
+            return new List<object>
+            {
+                new { value = "17", label = "Dent" },
+                new { value = "68", label = "Dent - Large" },
+                new { value = "36", label = "Rust" }
+            };
+        }
+    }
 }
 

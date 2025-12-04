@@ -225,6 +225,62 @@ namespace UyanycarusaService.Controllers
             }
         }
 
+        /// <summary>
+        /// Obtiene la lista de componentes para selección de daños
+        /// </summary>
+        /// <returns>Lista de componentes</returns>
+        /// <response code="200">Retorna la lista de componentes exitosamente</response>
+        /// <response code="401">No autorizado. Se requiere un token JWT válido</response>
+        /// <response code="500">Error interno del servidor</response>
+        [HttpGet("components")]
+        [ProducesResponseType(typeof(List<object>), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<List<object>>> GetComponents()
+        {
+            try
+            {
+                var components = await _vehiclesService.GetComponentsAsync();
+                return Ok(components);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new
+                {
+                    message = "Error inesperado al obtener componentes",
+                    detail = ex.Message
+                });
+            }
+        }
+
+        /// <summary>
+        /// Obtiene la lista de tipos de falla para selección de daños
+        /// </summary>
+        /// <returns>Lista de tipos de falla</returns>
+        /// <response code="200">Retorna la lista de tipos de falla exitosamente</response>
+        /// <response code="401">No autorizado. Se requiere un token JWT válido</response>
+        /// <response code="500">Error interno del servidor</response>
+        [HttpGet("fault-types")]
+        [ProducesResponseType(typeof(List<object>), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<List<object>>> GetFaultTypes()
+        {
+            try
+            {
+                var faultTypes = await _vehiclesService.GetFaultTypesAsync();
+                return Ok(faultTypes);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new
+                {
+                    message = "Error inesperado al obtener tipos de falla",
+                    detail = ex.Message
+                });
+            }
+        }
+
     }
 }
 
